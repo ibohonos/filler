@@ -6,14 +6,18 @@
 /*   By: ibohonos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 18:15:42 by ibohonos          #+#    #+#             */
-/*   Updated: 2018/01/10 18:52:29 by ibohonos         ###   ########.fr       */
+/*   Updated: 2018/01/11 00:03:48 by ibohonos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
-int	main(int argc, char **argv)
+int	main(void)
 {
-	ft_printf("%s\n%d\n", argv[1], argc);
+	t_map	p;
+	char	*line;
+
+	line = NULL;
+	filler(line, &p);
 	return (0);
 }
