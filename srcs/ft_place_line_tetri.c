@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_place_line_tetri.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibohonos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/25 15:40:15 by ibohonos          #+#    #+#             */
-/*   Updated: 2018/01/11 18:04:27 by ibohonos         ###   ########.fr       */
+/*   Created: 2018/01/11 18:36:24 by ibohonos          #+#    #+#             */
+/*   Updated: 2018/01/11 18:36:32 by ibohonos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "filler.h"
 
-# include "libft.h"
-# include <fcntl.h>
-
-# define BUFF_SIZE 1024
-
-int	get_next_line(const int fd, char **line);
-
-#endif
+void	ft_place_line_tetri(char *line, t_map *p)
+{
+	p->tetri[p->row] = ft_strdup(line);
+	p->row++;
+	if (p->row == p->y)
+	{
+		p->row = 0;
+		p->done = 1;
+	}
+}

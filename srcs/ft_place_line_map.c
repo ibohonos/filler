@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_place_line_map.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibohonos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/25 15:40:15 by ibohonos          #+#    #+#             */
-/*   Updated: 2018/01/11 18:04:27 by ibohonos         ###   ########.fr       */
+/*   Created: 2018/01/11 18:36:46 by ibohonos          #+#    #+#             */
+/*   Updated: 2018/01/11 18:36:54 by ibohonos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "filler.h"
 
-# include "libft.h"
-# include <fcntl.h>
+void	ft_place_line_map(char *line, t_map *p)
+{
+	char	**arr;
 
-# define BUFF_SIZE 1024
-
-int	get_next_line(const int fd, char **line);
-
-#endif
+	arr = ft_strsplit(line, ' ');
+	if (arr[1] && !(ft_strcmp(arr[0], "Plateau") == 0))
+	{
+		p->map[p->row] = ft_strdup(arr[1]);
+		p->row++;
+	}
+	ft_free_arr(arr);
+}

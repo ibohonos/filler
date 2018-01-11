@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_len_btw.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibohonos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/25 15:40:15 by ibohonos          #+#    #+#             */
-/*   Updated: 2018/01/11 18:04:27 by ibohonos         ###   ########.fr       */
+/*   Created: 2018/01/11 18:33:55 by ibohonos          #+#    #+#             */
+/*   Updated: 2018/01/11 18:34:08 by ibohonos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "filler.h"
 
-# include "libft.h"
-# include <fcntl.h>
+int		ft_len_btw(int i, int j, t_map *p)
+{
+	int k;
+	int z;
 
-# define BUFF_SIZE 1024
-
-int	get_next_line(const int fd, char **line);
-
-#endif
+	k = p->save_x - i;
+	z = p->save_y - j;
+	k *= k;
+	z *= z;
+	k += z;
+	return (k);
+}

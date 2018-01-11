@@ -6,7 +6,7 @@
 /*   By: ibohonos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 18:26:18 by ibohonos          #+#    #+#             */
-/*   Updated: 2018/01/11 11:51:42 by ibohonos         ###   ########.fr       */
+/*   Updated: 2018/01/11 15:08:04 by ibohonos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,19 @@ typedef struct	s_map
 	char		**tetri;
 }				t_map;
 
+void			ft_place_line_tetri(char *line, t_map *p);
+void			ft_place_line_map(char *line, t_map *p);
+void			ft_find_place(t_map *p, int *a, int *b);
+void			ft_find_player(char *line, t_map *p);
+void			ft_find_tetri(char *line, t_map *p);
+void			ft_find_map(char *line, t_map *p);
 void			filler(char *line, t_map *p);
+void			ft_free_arr(char **arr);
+void			ft_place_map(t_map *p);
+void			ft_init_map(t_map *p);
+int				ft_check_place(t_map *p, int x, int y, char letter);
+int				ft_find_spase(t_map *p, int i, int j);
+int				ft_len_btw(int i, int j, t_map *p);
+int				ft_len(t_map *p);
 
 #endif

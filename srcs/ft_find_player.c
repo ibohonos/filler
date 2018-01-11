@@ -1,23 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_find_player.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibohonos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/25 15:40:15 by ibohonos          #+#    #+#             */
-/*   Updated: 2018/01/11 18:04:27 by ibohonos         ###   ########.fr       */
+/*   Created: 2018/01/11 18:38:02 by ibohonos          #+#    #+#             */
+/*   Updated: 2018/01/11 18:38:09 by ibohonos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "filler.h"
 
-# include "libft.h"
-# include <fcntl.h>
-
-# define BUFF_SIZE 1024
-
-int	get_next_line(const int fd, char **line);
-
-#endif
+void	ft_find_player(char *line, t_map *p)
+{
+	if (line[10] == '1')
+		p->player = 'O';
+	else if (line[10] == '2')
+		p->player = 'X';
+}

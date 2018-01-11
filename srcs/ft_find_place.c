@@ -1,34 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   filler.c                                           :+:      :+:    :+:   */
+/*   ft_find_place.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibohonos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/10 22:33:44 by ibohonos          #+#    #+#             */
-/*   Updated: 2018/01/11 18:37:57 by ibohonos         ###   ########.fr       */
+/*   Created: 2018/01/11 18:35:42 by ibohonos          #+#    #+#             */
+/*   Updated: 2018/01/11 18:35:53 by ibohonos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
-void	filler(char *line, t_map *p)
+void	ft_find_place(t_map *p, int *a, int *b)
 {
-	ft_init_map(p);
-	while (get_next_line(0, &line) > 0)
+	int		x;
+	int		y;
+	char	letter;
+
+	if (p->player == 'O')
+		letter = p->player;
+	else
+		letter = 'X';
+	y = 0;
+	while (y < p->h)
 	{
-		if (!p->player)
-			ft_find_player(line, p);
-		if (!p->w && !p->h)
-			ft_find_map(line, p);
-		else if (p->row >= 0 && p->row < p->h)
-			ft_place_line_map(line, p);
-		if (p->row >= p->h)
-			ft_find_tetri(line, p);
-		else if (p->row >= 0 && p->row < p->y)
-			ft_place_line_tetri(line, p);
-		if (p->done == 1)
-			ft_place_map(p);
-		ft_strdel(&line);
+		x = 0;
+		while (x < p->w)
+		{
+			if (ft_check_place(p, x, y, letter))
+			{
+				if (((*a) == 0 && (*b) == 0) || (ft_len(p) &&
+				ft_len_btw((*a), (*b), p) > ft_len_btw(y, x, p)))
+				{
+					(*a) = y;
+					(*b) = x;
+				}
+			}
+		}
 	}
 }

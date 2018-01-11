@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_find_tetri.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibohonos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/25 15:40:15 by ibohonos          #+#    #+#             */
-/*   Updated: 2018/01/11 18:04:27 by ibohonos         ###   ########.fr       */
+/*   Created: 2018/01/11 18:37:07 by ibohonos          #+#    #+#             */
+/*   Updated: 2018/01/11 18:37:14 by ibohonos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "filler.h"
 
-# include "libft.h"
-# include <fcntl.h>
+void	ft_find_tetri(char *line, t_map *p)
+{
+	char **tmp;
 
-# define BUFF_SIZE 1024
-
-int	get_next_line(const int fd, char **line);
-
-#endif
+	tmp = ft_strsplit(line, ' ');
+	if (ft_strcmp(tmp[0], "Piece") == 0)
+	{
+		p->x = ft_atoi(tmp[2]);
+		p->y = ft_atoi(tmp[1]);
+		p->tetri = (char **)malloc(sizeof(char *) * p->y + 1);
+		p->row = 0;
+	}
+	ft_free_arr(tmp);
+}

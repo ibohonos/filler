@@ -1,23 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_len.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibohonos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/25 15:40:15 by ibohonos          #+#    #+#             */
-/*   Updated: 2018/01/11 18:04:27 by ibohonos         ###   ########.fr       */
+/*   Created: 2018/01/11 18:34:55 by ibohonos          #+#    #+#             */
+/*   Updated: 2018/01/11 18:35:04 by ibohonos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "filler.h"
 
-# include "libft.h"
-# include <fcntl.h>
+int		ft_len(t_map *p)
+{
+	int		i;
+	int		j;
+	char	letter;
 
-# define BUFF_SIZE 1024
-
-int	get_next_line(const int fd, char **line);
-
-#endif
+	if (p->player == 'O')
+		letter = 'X';
+	else
+		letter = 'O';
+	i = 0;
+	while (i < p->h)
+	{
+		j = 0;
+		while (j < p->w)
+		{
+			if (p->map[i][j] == letter && ft_find_spase(p, i, j))
+			{
+				p->save_x = j;
+				p->save_y = i;
+				return (1);
+			}
+		}
+	}
+	return (0);
+}

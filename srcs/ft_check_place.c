@@ -1,34 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   filler.c                                           :+:      :+:    :+:   */
+/*   ft_check_place.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibohonos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/10 22:33:44 by ibohonos          #+#    #+#             */
-/*   Updated: 2018/01/11 18:37:57 by ibohonos         ###   ########.fr       */
+/*   Created: 2018/01/11 18:35:22 by ibohonos          #+#    #+#             */
+/*   Updated: 2018/01/11 18:35:30 by ibohonos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "filler.h"
 
-void	filler(char *line, t_map *p)
+int		ft_check_place(t_map *p, int x, int y, char letter)
 {
-	ft_init_map(p);
-	while (get_next_line(0, &line) > 0)
+	int i;
+	int j;
+	int k;
+
+	k = 0;
+	i = 0;
+	if ((p->w - x - p->x) < 0 || (p->h - y - p->y) < 0)
+		return (0);
+	while (k < p->y)
 	{
-		if (!p->player)
-			ft_find_player(line, p);
-		if (!p->w && !p->h)
-			ft_find_map(line, p);
-		else if (p->row >= 0 && p->row < p->h)
-			ft_place_line_map(line, p);
-		if (p->row >= p->h)
-			ft_find_tetri(line, p);
-		else if (p->row >= 0 && p->row < p->y)
-			ft_place_line_tetri(line, p);
-		if (p->done == 1)
-			ft_place_map(p);
-		ft_strdel(&line);
+		j = 0;
+		while (j < p->x)
+		{
+			if (p->map[y + k][x + j] == letter && p->tetri[k][j] == '*')
+				i++;
+			else if (p->map[y + k][x + j] != '.' && p->tetri[k][j] == '*')
+				i = 2;
+			j++;
+		}
+		k++;
 	}
+	if (i == 1)
+		return (1);
+	return (0);
 }

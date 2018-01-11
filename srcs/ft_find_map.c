@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_find_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibohonos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/25 15:40:15 by ibohonos          #+#    #+#             */
-/*   Updated: 2018/01/11 18:04:27 by ibohonos         ###   ########.fr       */
+/*   Created: 2018/01/11 18:37:43 by ibohonos          #+#    #+#             */
+/*   Updated: 2018/01/11 18:37:50 by ibohonos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "filler.h"
 
-# include "libft.h"
-# include <fcntl.h>
+void	ft_find_map(char *line, t_map *p)
+{
+	char **tmp;
 
-# define BUFF_SIZE 1024
-
-int	get_next_line(const int fd, char **line);
-
-#endif
+	tmp = ft_strsplit(line, ' ');
+	if (ft_strcmp(tmp[0], "Plateau") == 0)
+	{
+		p->w = ft_atoi(tmp[2]);
+		p->h = ft_atoi(tmp[1]);
+		p->map = (char **)malloc(sizeof(char *) * p->h + 1);
+		p->row = 0;
+	}
+	ft_free_arr(tmp);
+}
