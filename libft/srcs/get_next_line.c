@@ -18,7 +18,7 @@ static char	*ft_join_str(char *str, int fd)
 	char	buf[BUFF_SIZE + 1];
 	char	*file;
 
-	while ((rf = read(fd, buf, BUFF_SIZE)) > 0)
+	while (!ft_strchr(str, '\n') && (rf = read(fd, buf, BUFF_SIZE)) > 0)
 	{
 		file = str;
 		buf[rf] = '\0';

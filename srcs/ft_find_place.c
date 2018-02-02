@@ -29,14 +29,14 @@ void	ft_find_place(t_map *p, int *a, int *b)
 		while (x < p->w)
 		{
 			if (ft_check_place(p, x, y, letter))
-			{
 				if (((*a) == 0 && (*b) == 0) || (ft_len(p) &&
 				ft_len_btw((*a), (*b), p) > ft_len_btw(y, x, p)))
 				{
 					(*a) = y;
 					(*b) = x;
 				}
-			}
+			x++;
 		}
+		y++;
 	}
 }

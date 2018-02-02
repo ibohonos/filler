@@ -6,7 +6,7 @@
 #    By: ibohonos <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/10/24 16:55:15 by ibohonos          #+#    #+#              #
-#    Updated: 2017/12/03 16:00:22 by ibohonos         ###   ########.fr        #
+#    Updated: 2018/02/02 16:17:01 by ibohonos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,18 +52,18 @@ SRC 		= ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c \
 all: $(NAME)
 
 $(OBJ_DIR)/%.o:$(SRC_DIR)/%.c
-	$(CC) $(FLAGS) -I $(INCL_DIR) -o $@ -c $<
+	@$(CC) $(FLAGS) -I $(INCL_DIR) -o $@ -c $<
 
 $(NAME):
 	@mkdir -p $(OBJ_DIR)
 	@$(MAKE) $(OBJ)
 	@ar rc $(NAME) $(OBJ)
-	ranlib $(NAME)
+	@ranlib $(NAME)
 
 clean:
-	/bin/rm -rf $(OBJ_DIR)
+	@/bin/rm -rf $(OBJ_DIR)
 
 fclean: clean
-	/bin/rm -f $(NAME)
+	@/bin/rm -f $(NAME)
 
 re: fclean all

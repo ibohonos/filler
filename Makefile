@@ -6,7 +6,7 @@
 #    By: ibohonos <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/01/10 17:16:16 by ibohonos          #+#    #+#              #
-#    Updated: 2018/01/11 18:50:13 by ibohonos         ###   ########.fr        #
+#    Updated: 2018/02/02 19:37:02 by ibohonos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,8 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@$(CC) $(FLAGS) -I $(LIB_INC) -I $(INCL_DIR) -c $< -o $@
 
 $(NAME):
+	@echo "\x1B[3;32mCompilling LIBFT\x1B[0m"
+	@make -C libft
 	@mkdir -p $(OBJ_DIR)
 	@$(MAKE) $(OBJ)
 	@echo "\x1B[3;32mCreate bot\x1B[0m"
@@ -42,15 +44,20 @@ $(NAME):
 	@cp $(NAME) players/
 
 clean:
+	@echo "\x1B[3;31mCleaning LIBFT objects\x1B[0m"
+	@make -C libft clean
 	@echo "\x1B[3;31mCleaning objects\x1B[0m"
 	@/bin/rm -rf $(OBJ_DIR)
 
 fclean: clean
+	@echo "\x1B[3;31mCleaning LIBFT exe\x1B[0m"
+	@make -C libft fclean
 	@echo "\x1B[3;31mCleaning exe\x1B[0m"
 	@/bin/rm -f $(NAME)
 	@/bin/rm -f players/$(NAME)
 
 re: fclean all
 
-check: re
-	@./filler_vm -p1 players/ibohonos.filler -p2 players/abanlin.filler -f maps/map00
+visual: all
+	@echo "\x1B[3;32mCreate visual\x1B[0m"
+	@gcc -Wall -Wextra -Werror -o bonus srcs/bonus.c -I libft/includes libft/libft.a

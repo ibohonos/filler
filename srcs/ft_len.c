@@ -34,7 +34,9 @@ int		ft_len(t_map *p)
 				p->save_y = i;
 				return (1);
 			}
+			j++;
 		}
+		i++;
 	}
 	return (0);
 }

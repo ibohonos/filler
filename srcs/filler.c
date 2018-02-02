@@ -6,7 +6,7 @@
 /*   By: ibohonos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 22:33:44 by ibohonos          #+#    #+#             */
-/*   Updated: 2018/01/11 18:37:57 by ibohonos         ###   ########.fr       */
+/*   Updated: 2018/02/02 16:08:50 by ibohonos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	filler(char *line, t_map *p)
 	ft_init_map(p);
 	while (get_next_line(0, &line) > 0)
 	{
-		if (!p->player)
+		if (p->player == 0)
 			ft_find_player(line, p);
 		if (!p->w && !p->h)
 			ft_find_map(line, p);

@@ -17,7 +17,7 @@ void	ft_place_line_map(char *line, t_map *p)
 	char	**arr;
 
 	arr = ft_strsplit(line, ' ');
-	if (arr[1] && !(ft_strcmp(arr[0], "Plateau") == 0))
+	if (arr[1] && ft_strcmp(arr[0], "Plateau") != 0)
 	{
 		p->map[p->row] = ft_strdup(arr[1]);
 		p->row++;
