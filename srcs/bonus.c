@@ -6,7 +6,7 @@
 /*   By: ibohonos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/02 16:19:15 by ibohonos          #+#    #+#             */
-/*   Updated: 2018/02/02 19:38:48 by ibohonos         ###   ########.fr       */
+/*   Updated: 2018/02/02 22:21:21 by ibohonos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,14 @@ void	ft_bonus(char *line)
 			ft_printf("%S ", L"🌛");
 		else if (line[i] == 'X')
 			ft_printf("%S ", L"🌱");
-		else if (line[i] == '.')
+		else if (line[i] == '.' && line[0] != 'l' && line[0] != '$'
+			&& line[0] != '#')
 			ft_printf(CYN"%S "RESET, L"☀");
 		else if (line[i] == '*')
 			ft_printf("%S ", L"🌽");
-		else if (line[i] == 'o' || line[i] == 'x')
+		else if ((line[i] == 'o' || line[i] == 'x') &&
+			line[0] != '<' && line[0] != '$' && line[0] != '#'
+			&& line[0] != 'l')
 			ft_printf("%S ", L"🐗");
 		else
 			ft_printf("%c", line[i]);
@@ -46,11 +49,7 @@ int		main(void)
 	line = NULL;
 	while (get_next_line(0, &line) > 0)
 	{
-		if (line[0] == '<' || line[0] == '$' || line[0] == '#'
-			|| line[0] == 'l')
-			ft_printf("%s\n", line);
-		else
-			ft_bonus(line);
+		ft_bonus(line);
 		free(line);
 		line = NULL;
 	}
