@@ -6,7 +6,7 @@
 /*   By: ibohonos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 18:26:18 by ibohonos          #+#    #+#             */
-/*   Updated: 2018/02/01 17:57:13 by ibohonos         ###   ########.fr       */
+/*   Updated: 2018/02/06 00:54:23 by ibohonos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,12 @@ typedef struct	s_map
 	int			done;
 	int			save_x;
 	int			save_y;
+	int			tetri_x;
+	int			tetri_y;
+	int			enemy_x;
+	int			enemy_y;
 	char		player;
+	char		enemy;
 	char		**map;
 	char		**tetri;
 }				t_map;
@@ -41,7 +46,7 @@ void			filler(char *line, t_map *p);
 void			ft_free_arr(char **arr);
 void			ft_place_map(t_map *p);
 void			ft_init_map(t_map *p);
-int				ft_check_place(t_map *p, int x, int y, char letter);
+int				ft_check_place(t_map *p, int x, int y);
 int				ft_find_spase(t_map *p, int i, int j);
 int				ft_len_btw(int i, int j, t_map *p);
 int				ft_len(t_map *p);

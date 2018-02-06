@@ -6,7 +6,7 @@
 /*   By: ibohonos <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 18:38:02 by ibohonos          #+#    #+#             */
-/*   Updated: 2018/01/11 18:38:09 by ibohonos         ###   ########.fr       */
+/*   Updated: 2018/02/05 23:18:57 by ibohonos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,13 @@
 void	ft_find_player(char *line, t_map *p)
 {
 	if (line[10] == '1')
+	{
 		p->player = 'O';
+		p->enemy = 'X';
+	}
 	else if (line[10] == '2')
+	{
 		p->player = 'X';
+		p->enemy = 'O';
+	}
 }
